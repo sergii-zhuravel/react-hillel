@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as contactsService from "../../services/contactsService";
 import ContactForm from "../contactForm/ContactForm";
 import ContactsList from "../contactsList/ContactsList";
+import "./Contacts.css";
 
 class Contacts extends Component {
   state = {
@@ -89,7 +90,7 @@ class Contacts extends Component {
   }
   render() {
     return (
-      <>
+      <div className="container">
         {this.state.page === "list" ? (
           <>
             <ContactsList
@@ -111,7 +112,7 @@ class Contacts extends Component {
             onSave={this.onSave}
           />
         )}
-      </>
+      </div>
     );
   }
 }

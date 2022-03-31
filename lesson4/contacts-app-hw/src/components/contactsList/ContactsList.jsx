@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import ContactsListItem from "../contactsListItem/ContactsListItem";
-import "./styles.css";
+import "./ContactsList.css";
 
 class ContactsList extends Component {
   render() {
     return (
-      <ul className="contacts-list">
+      <ul className="contact-list">
         {this.props.contacts.map((contact) => (
           <ContactsListItem
             key={contact.id}
