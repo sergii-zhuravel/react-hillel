@@ -6,14 +6,22 @@ class ContactForm extends Component {
     this.state = {
       ...props.contact,
     };
+    this.onDeleteBtnClick = this.onDeleteBtnClick.bind(this);
+    this.onContactFormSubmit = this.onContactFormSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
-  
+
   onDeleteBtnClick() {
     this.props.onDelete(this.props.contact);
   }
   onContactFormSubmit(e) {
     e.preventDefault();
-    this.props.onSave(this.props.contact);
+    const newContact = {
+      name: this.state.name,
+      surname: this.state.surname,
+      phone: this.state.phone,
+    };
+    this.props.onSave(newContact);
   }
 
   onChange(e) {

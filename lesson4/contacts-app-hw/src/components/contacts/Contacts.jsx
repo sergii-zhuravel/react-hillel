@@ -9,6 +9,16 @@ class Contacts extends Component {
     contacts: [],
     page: "list",
   };
+  constructor(props) {
+    super(props);
+    this.onAddNewBtnClick = this.onAddNewBtnClick.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onContactSelect = this.onContactSelect.bind(this);
+    this.onContactDelete = this.onContactDelete.bind(this);
+    this.onSave = this.onSave.bind(this);
+    this.createContact = this.createContact.bind(this);
+    this.updateContact = this.updateContact.bind(this);
+  }
   componentDidMount() {
     contactsService.getContactsList().then((data) => {
       this.setState({ contacts: data });
@@ -35,6 +45,7 @@ class Contacts extends Component {
   onContactSelect(contact) {
     this.setState({
       selectedContact: contact,
+      page: "form",
     });
   }
   onContactDelete(contact) {
@@ -52,6 +63,9 @@ class Contacts extends Component {
     } else {
       this.createContact(contact);
     }
+    this.setState({
+      page: "list",
+    });
   }
   createContact(contact) {
     contactsService.createContact(contact).then((data) => {
@@ -62,7 +76,7 @@ class Contacts extends Component {
       });
     });
   }
-  createContact(contact) {
+  updateContact(contact) {
     contactsService.updateContact(contact).then((data) => {
       const contacts = this.state.contacts.map((el) =>
         el.id === contact.id ? contact : el
@@ -92,7 +106,7 @@ class Contacts extends Component {
           </>
         ) : (
           <ContactForm
-            contact={this.selectedContact}
+            contact={this.state.selectedContact}
             onCancel={this.onCancel}
             onSave={this.onSave}
           />
