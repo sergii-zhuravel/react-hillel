@@ -11,8 +11,6 @@ import TodoFilter from "./TodoFilter";
 import { useLocalStorage, useAsync } from "../hooks/common";
 
 export default function Todos() {
-  // const [todos, setTodos] = useState([]);
-  // const [status, setStatus] = useState("IDLE");
   const [filter, setFilter] = useLocalStorage("filter", "all");
   const {
     run,
@@ -20,6 +18,8 @@ export default function Todos() {
     setData: setTodos,
     status,
   } = useAsync(getTodos, []);
+
+  useEffect(() => run(), []);
 
   const filteredTodos = useMemo(() => {
     let filteredTodos = todos;
@@ -32,10 +32,6 @@ export default function Todos() {
     }
     return filteredTodos;
   }, [filter, todos]);
-
-  useEffect(() => {
-    run();
-  }, []);
 
   const onDeleteButtonClick = (id) => {
     deleteTodo(id);
