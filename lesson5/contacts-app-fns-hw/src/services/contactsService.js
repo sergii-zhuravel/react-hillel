@@ -13,7 +13,7 @@ export function createContact(contact) {
 }
 
 export function updateContact(contact) {
-  return fetch(URL, {
+  return fetch(URL + contact.id, {
     method: "PUT",
     body: JSON.stringify(contact),
     headers: { "Content-Type": "application/json" },
