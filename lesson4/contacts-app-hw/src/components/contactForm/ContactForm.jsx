@@ -18,6 +18,7 @@ class ContactForm extends Component {
   onContactFormSubmit(e) {
     e.preventDefault();
     const newContact = {
+      id: this.state.id,
       name: this.state.name,
       surname: this.state.surname,
       phone: this.state.phone,
