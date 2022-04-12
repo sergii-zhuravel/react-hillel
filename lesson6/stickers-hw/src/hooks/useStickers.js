@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import api from "../api/api";
-// const URL = "https://612687da3ab4100017a68fd8.mockapi.io/stickers/";
 
 const EMTPY_STICKER = {
   description: "",
@@ -21,7 +20,7 @@ export default function useStickers() {
   }
 
   function deleteSticker(id) {
-    api.delete(id).then(({ data }) => setStickers(data));
+    api.delete(id);
     setStickers(stickers.filter((item) => item.id !== id));
   }
 
@@ -29,8 +28,8 @@ export default function useStickers() {
     api
       .put(sticker.id, sticker)
       .then(({ data }) =>
-        setStickers(
-          stickers.map((item) => (item.id === sticker.id ? data : sticker))
+        setStickers((stickers) =>
+          stickers.map((item) => (item.id === sticker.id ? data : item))
         )
       );
   }

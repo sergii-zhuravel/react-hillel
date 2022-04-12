@@ -1,7 +1,6 @@
 import Sticker from "./Sticker";
 
 function StickersList({ stickers, onDelete, onSave }) {
-  console.log(stickers);
   return (
     <div>
       {stickers.map((item) => (
