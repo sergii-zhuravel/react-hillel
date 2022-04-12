@@ -1,8 +1,9 @@
-// import axios from "axios";
+import axios from "axios";
+const URL = "https://612687da3ab4100017a68fd8.mockapi.io/stickers/";
 
-// export default axios.sceate({
-//   baseUrl: "",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// });
+export default axios.create({
+  baseUrl: URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
