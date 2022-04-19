@@ -1,5 +1,5 @@
 import api from "../api/api";
-import { CONTACTS_URI } from "../contants";
+import { CONTACTS_URI } from "../constants";
 
 export function getContactsList() {
   return api.get(CONTACTS_URI).then((resp) => resp.data);
