@@ -1,7 +1,5 @@
 import api from "../api/api";
-
-// const URL = "https://612687da3ab4100017a68fd8.mockapi.io/contacts/";
-const CONTACTS_URI = "contacts";
+import { CONTACTS_URI } from "../contants";
 
 export function getContactsList() {
   return api.get(CONTACTS_URI).then((resp) => resp.data);

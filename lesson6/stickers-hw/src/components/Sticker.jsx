@@ -20,7 +20,7 @@ function Sticker({ sticker, onDelete, onSave }) {
       </div>
       <div style={stickerBodyStyles}>
         <textarea
-          name="desctiption"
+          name="description"
           style={descriptionInputStyles}
           value={description}
           onChange={onValueChange}

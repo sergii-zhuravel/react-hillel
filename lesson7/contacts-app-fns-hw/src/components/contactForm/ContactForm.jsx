@@ -6,10 +6,7 @@ function ContactForm(props) {
 
   const onContactFormSubmit = (e) => {
     e.preventDefault();
-    const newContact = {
-      ...contact,
-    };
-    props.onSave(newContact);
+    props.onSave(contact);
   };
 
   const onChange = (e) => {
