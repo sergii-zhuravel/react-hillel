@@ -6,6 +6,7 @@ function ContactsListItem({ contact, onDelete, onSelect }) {
     e.stopPropagation();
     onDelete(contact);
   };
+
   return (
     <li className="contact-list-item" onClick={onSelect.bind(null, contact)}>
       {contact.name} {contact.surname} - {contact.phone}

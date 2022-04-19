@@ -14,5 +14,5 @@ export function updateContact(contact) {
 }
 
 export function deleteContact(id) {
-  return api.delete(CONTACTS_URI + "/" + id).then((resp) => resp.data);
+  return api.delete(`${CONTACTS_URI}/${id}`).then((resp) => resp.data);
 }

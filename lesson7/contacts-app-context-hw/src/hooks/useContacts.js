@@ -21,17 +21,17 @@ export default function useContacts() {
   }, [toggleIsLoading]);
 
   const save = useCallback(
-    (data) => {
+    (contact) => {
       toggleIsLoading(true);
-      if (data.id) {
-        updateContact(data).then((data) => {
+      if (contact.id) {
+        updateContact(contact).then((data) => {
           setContacts((contacts) =>
             contacts.map((el) => (el.id === data.id ? data : el))
           );
           toggleIsLoading(false);
         });
       } else {
-        createContact(data).then((data) => {
+        createContact(contact).then((data) => {
           setContacts((contacts) => [...contacts, data]);
           toggleIsLoading(false);
         });
