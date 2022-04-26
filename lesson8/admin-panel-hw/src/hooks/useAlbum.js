@@ -1,22 +1,22 @@
-import { getAlbum } from "../services/photosServices";
 import { useCallback, useEffect, useState } from "react";
+import { getAlbumsPhotos } from "../services/photosService";
 
 export function useAlbum(albumId) {
-  const [album, setAlbum] = useState([]);
-  const [albumIsLoading, setAlbumIsLoading] = useState(false);
+  const [photos, setPhotos] = useState([]);
+  const [photosAreLoading, setPhotosLoading] = useState(false);
 
   const getAlbumData = useCallback(() => {
-    setAlbumIsLoading(true);
-    getAlbum(albumId).then(({ data }) => {
-      setAlbum(data);
-      setAlbumIsLoading(false);
+    setPhotosLoading(true);
+    getAlbumsPhotos(albumId).then((data) => {
+      setPhotos(data);
+      setPhotosLoading(false);
     });
-  }, [setAlbum]);
+  }, [setPhotos, albumId]);
 
-  useEffect(getAlbumData, [setAlbum]);
+  useEffect(getAlbumData, [setPhotos]);
 
   return {
-    album,
-    albumIsLoading,
+    photos,
+    photosAreLoading,
   };
 }
