@@ -1,31 +1,26 @@
-import Contacts from "./components/contacts/Contacts";
-import ThemeProvider from "./context/ThemeProvider";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import AlbumsPage from "./pages/AlbumsPage";
+import DashboardPage from "./pages/DashboardPage";
+import UsersPage from "./pages/UsersPage";
 
 function App() {
   return (
-    <ThemeProvider>
-      <BrowserRouter>
-        <div>
-          <Link to={"/contacts"}>Contacts</Link> |{" "}
-          <Link to={"/users"}>Users</Link> | <Link to={"/posts"}>Posts</Link>
-        </div>
-        <Switch>
-          <Route path={"/contacts"} exect>
-            <Contacts />
-          </Route>
-          <Route path={"/contacts/:id"}>
-            <div>Edit contact</div>
-          </Route>
-          <Route path={"/users"}>
-            <div>Users</div>
-          </Route>
-          <Route path={"/posts"}>
-            <div>Posts</div>
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <div>
+        <Link to={"/albums"}>Albums</Link> | <Link to={"/users"}>Users</Link>
+      </div>
+      <Switch>
+        <Route path={"/albums"} exect>
+          <AlbumsPage />
+        </Route>
+        <Route path={"/users"}>
+          <UsersPage />
+        </Route>
+        <Route path={"/"}>
+          <DashboardPage />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
