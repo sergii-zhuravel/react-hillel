@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUsersList } from "../services/usersService";
+import { deleteUser, getUsersList } from "../services/usersService";
 import { useBooleanFlag } from "./common";
 
 export default function useUsers() {
@@ -16,8 +16,20 @@ export default function useUsers() {
       .finally(() => toggleIsLoading(false));
   }, []);
 
+  function removeUser(id) {
+    toggleIsLoading(true);
+    setError(null);
+
+    deleteUser(id)
+      .then(() => {
+        setUsers((users) => users.filter((user) => user.id !== id));
+      })
+      .finally(() => toggleIsLoading(false));
+  }
+
   return {
     users,
+    removeUser,
     isLoading,
     error,
   };

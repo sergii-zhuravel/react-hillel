@@ -1,7 +1,7 @@
-import { Link, useParams } from "react-router-dom";
-import PhotosList from "../components/Albums/PhotosList/PhotosList";
-import Loading from "../components/common/Loading";
-import { useAlbum } from "../hooks/useAlbum";
+import { useParams } from "react-router-dom";
+import PhotosList from "../../components/Albums/PhotosList/PhotosList";
+import Loading from "../../components/common/Loading";
+import { useAlbum } from "../../hooks/useAlbum";
 
 function AlbumContentPage() {
   const { albumId } = useParams();

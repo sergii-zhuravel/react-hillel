@@ -1,6 +1,6 @@
 import UsersListItem from "../UsersListItem/UsersListItem";
 
-function UsersList({ list }) {
+function UsersList({ list, removeUser }) {
   return (
     <table>
       <thead>
@@ -13,7 +13,7 @@ function UsersList({ list }) {
       </thead>
       <tbody>
         {list.map((user) => (
-          <UsersListItem key={user.id} item={user} />
+          <UsersListItem key={user.id} item={user} removeUser={removeUser} />
         ))}
       </tbody>
     </table>
