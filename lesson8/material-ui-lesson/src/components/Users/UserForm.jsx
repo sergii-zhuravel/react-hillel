@@ -9,7 +9,7 @@ import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function UserForm({ user, saveUser, deleteUser }) {
+function UserForm({ user, saveUser, removeUser }) {
   const [formState, setFormState] = useState({ ...user });
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ function UserForm({ user, saveUser, deleteUser }) {
     navigate("/users");
   }
   function handleDelete() {
-    deleteUser().then(() => {
+    removeUser().then(() => {
       navigate("/users");
     });
   }
@@ -80,7 +80,7 @@ function UserForm({ user, saveUser, deleteUser }) {
             <Button color={"primary"} onClick={handleCancel}>
               Cancel
             </Button>
-            {deleteUser ? (
+            {removeUser ? (
               <Button color={"error"} onClick={handleDelete}>
                 Delete
               </Button>

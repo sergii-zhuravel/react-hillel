@@ -33,7 +33,6 @@ export default function useUser(id) {
   }, [id]);
 
   function saveUser(user) {
-    console.log(user);
     if (user.id) {
       return updateUser(user);
     } else {
