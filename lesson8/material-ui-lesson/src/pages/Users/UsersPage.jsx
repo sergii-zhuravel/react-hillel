@@ -1,4 +1,10 @@
-import { Box, Breadcrumbs, Button } from "@mui/material";
+import {
+  Backdrop,
+  Box,
+  Breadcrumbs,
+  Button,
+  CircularProgress,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import Loading from "../../components/common/Loading";
 import UsersList from "../../components/Users/UsersList/UsersList";
@@ -6,6 +12,7 @@ import useUsers from "../../hooks/useUsers";
 
 function UsersPage() {
   const { users, removeUser, isLoading } = useUsers();
+
   return (
     <Box>
       <Breadcrumbs aria-label="breadcrumb">
@@ -14,7 +21,12 @@ function UsersPage() {
       <h1>Users</h1>
 
       {isLoading ? (
-        <Loading />
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={isLoading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
       ) : (
         <UsersList list={users} removeUser={removeUser} />
       )}
