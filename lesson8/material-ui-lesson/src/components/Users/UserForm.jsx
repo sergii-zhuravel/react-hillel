@@ -80,9 +80,11 @@ function UserForm({ user, saveUser, deleteUser }) {
             <Button color={"primary"} onClick={handleCancel}>
               Cancel
             </Button>
-            <Button color={"error"} onClick={handleDelete}>
-              Delete
-            </Button>
+            {deleteUser ? (
+              <Button color={"error"} onClick={handleDelete}>
+                Delete
+              </Button>
+            ) : null}
           </ButtonGroup>
         </Box>
       </Box>

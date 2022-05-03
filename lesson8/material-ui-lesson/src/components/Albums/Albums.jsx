@@ -8,9 +8,7 @@ function Albums() {
 
   return (
     <Box sx={{ width: "100%", maxWidth: 500 }}>
-      <Typography variant="h1" component="div" gutterBottom>
-        Albums
-      </Typography>
+      <h1>Albums</h1>
       {isLoading ? <Loading /> : <AlbumsList list={albums} />}
     </Box>
   );

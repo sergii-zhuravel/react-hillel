@@ -4,22 +4,15 @@ import Loading from "../../components/common/Loading";
 import UserForm from "../../components/Users/UserForm";
 import useUser from "../../hooks/useUser";
 
-// const EMPTY_USER = {
-//   name: "",
-//   phone: "",
-//   email: "",
-//   website: "",
-// };
 function UserCreatePage() {
-  // const { users, isLoading } = useUsers();
-  const { user, isLoading } = useUser();
+  const { user, saveUser, isLoading } = useUser();
   return (
     <Box>
       <h1>Users</h1>
       <Breadcrumbs aria-label="breadcrumb">
         <Link to={"/"}>Dashboard</Link>
       </Breadcrumbs>
-      {isLoading ? <Loading /> : <UserForm user={user} />}
+      {isLoading ? <Loading /> : <UserForm user={user} saveUser={saveUser} />}
     </Box>
   );
 }

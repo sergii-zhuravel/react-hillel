@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs } from "@mui/material";
+import { Box, Breadcrumbs, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import Loading from "../../components/common/Loading";
 import UsersList from "../../components/Users/UsersList/UsersList";
@@ -18,6 +18,10 @@ function UsersPage() {
       ) : (
         <UsersList list={users} removeUser={removeUser} />
       )}
+
+      <Button to="create" component={Link}>
+        Create User
+      </Button>
     </Box>
   );
 }
