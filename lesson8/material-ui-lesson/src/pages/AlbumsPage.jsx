@@ -1,9 +1,12 @@
+import { Breadcrumbs } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 
 function AlbumsPage() {
   return (
     <div>
-      <span>{"<"}</span> <Link to={"/"}>Dashboard</Link>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link to={"/"}>Dashboard</Link>
+      </Breadcrumbs>
       <Outlet />
     </div>
   );

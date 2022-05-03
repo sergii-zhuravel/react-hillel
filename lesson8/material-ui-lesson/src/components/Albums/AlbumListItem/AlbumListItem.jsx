@@ -1,10 +1,24 @@
+import {
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import { Link } from "react-router-dom";
+import AlbumIcon from "@mui/icons-material/Album";
 
 function AlbumListItem({ item }) {
   return (
-    <li>
-      <Link to={String(item.id)}>{item.title}</Link>
-    </li>
+    <ListItem disablePadding>
+      <Link to={String(item.id)}>
+        <ListItemButton>
+          <ListItemIcon>
+            <AlbumIcon />
+          </ListItemIcon>
+          <ListItemText primary={item.title} />
+        </ListItemButton>
+      </Link>
+    </ListItem>
   );
 }
 

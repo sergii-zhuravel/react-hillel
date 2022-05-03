@@ -7,6 +7,7 @@ import AlbumContentPage from "./pages/AlbumContentPage";
 import Albums from "./components/Albums/Albums";
 import Header from "./components/common/Header";
 import { Container } from "@mui/material";
+import "./App.css";
 
 function App() {
   return (

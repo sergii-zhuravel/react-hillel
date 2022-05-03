@@ -1,12 +1,34 @@
-import { Link } from "react-router-dom";
+import { Box, Link, Paper, Typography } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 function DashboardPage() {
   return (
     <div>
-      <h1>Dashboard</h1>
-      <div>
-        <Link to={"/albums"}>Albums</Link> | <Link to={"/users"}>Users</Link>
-      </div>
+      <Typography variant="h1" component="div" gutterBottom>
+        Dashboard
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          "& > :not(style)": {
+            m: 1,
+            width: 128,
+            height: 128,
+          },
+        }}
+      >
+        <Paper>
+          <Link to={"/albums"} component={RouterLink}>
+            Albums
+          </Link>
+        </Paper>
+        <Paper>
+          <Link to={"/users"} component={RouterLink}>
+            Users
+          </Link>
+        </Paper>
+      </Box>
     </div>
   );
 }
