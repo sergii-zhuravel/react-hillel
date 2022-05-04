@@ -1,6 +1,6 @@
-export const ACTION_CHANGE_TODO_DONE = "ACTION_CHANGE_TODO_DONE";
+export const ACTION_TOGGLE_TODO_IS_DONE = "ACTION_TOGGLE_TODO_IS_DONE";
 
-export const changeDone = (payload) => ({
-  type: ACTION_CHANGE_TODO_DONE,
+export const toogleIsDone = (payload) => ({
+  type: ACTION_TOGGLE_TODO_IS_DONE,
   payload,
 });

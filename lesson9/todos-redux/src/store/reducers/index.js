@@ -1,4 +1,4 @@
-import { ACTION_CHANGE_TODO_DONE } from "../actions";
+import { ACTION_TOGGLE_TODO_IS_DONE } from "../actions";
 
 const INITIAL_STATE = {
   todos: [
@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 };
 export default function reducer(state = INITIAL_STATE, { type, payload }) {
   switch (type) {
-    case ACTION_CHANGE_TODO_DONE:
+    case ACTION_TOGGLE_TODO_IS_DONE:
       const newTodos = state.todos.map((todo) =>
         todo.id === payload.id ? { ...todo, isDone: !todo.isDone } : todo
       );

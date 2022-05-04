@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeDone } from "../store/actions";
+import { toogleIsDone } from "../store/actions";
 
 export default function List() {
   const todos = useSelector((state) => state.todos);
 
   const dispatch = useDispatch();
+
   function handleClick(todo) {
-    dispatch(changeDone(todo));
+    dispatch(toogleIsDone(todo));
   }
+
   return (
     <div>
       <ul>
