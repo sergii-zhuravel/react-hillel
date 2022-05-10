@@ -10,7 +10,7 @@ export default function TodoListContainer() {
   const dispatch = useDispatch();
 
   if (filter !== FILTER_ALL) {
-    todos = todos.filter((todo) => todo.isDone === (filter === FILTER_DONE));
+    todos = todos.filter((todo) => todo.completed === (filter === FILTER_DONE));
   }
 
   function handleToggleTodo(id) {

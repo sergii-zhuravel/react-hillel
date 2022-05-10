@@ -6,11 +6,7 @@ import {
 } from "./actions";
 
 const INITIAL_STATE = {
-  todos: [
-    // { id: 1, title: "Got a laptop", isDone: true },
-    // { id: 2, title: "Pass the React course", isDone: false },
-    // { id: 3, title: "Got a job", isDone: false },
-  ],
+  todos: [],
 };
 export default function todosReducer(state = INITIAL_STATE, { type, payload }) {
   switch (type) {
@@ -26,7 +22,7 @@ export default function todosReducer(state = INITIAL_STATE, { type, payload }) {
       };
     case TODOS_TOGGLE_TODO:
       const newTodos = state.todos.map((todo) =>
-        todo.id === payload ? { ...todo, isDone: !todo.isDone } : todo
+        todo.id === payload ? { ...todo, completed: !todo.completed } : todo
       );
       return { ...state, todos: newTodos };
     default:

@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 
 const initialValues = {
   title: "",
-  isDone: false,
+  completed: false,
 };
 
 export default function TodoForm() {

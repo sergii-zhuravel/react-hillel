@@ -3,8 +3,8 @@ import { Paper } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FILTER_ALL, FILTER_DONE, FILTER_NOT_DONE } from "../constants/filters";
-import { changeFilter, saveFilter } from "../store/filter/actions";
 import FilterButton from "./FilterButton";
+import { changeFilter } from "../store/filter/reducer";
 
 const PaperContainer = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),

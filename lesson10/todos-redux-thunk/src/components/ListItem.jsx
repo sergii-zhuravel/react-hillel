@@ -22,7 +22,7 @@ export default function TodoListItem({ todo, toggleTodo, removeTodo }) {
     <>
       <ListItem button onClick={handleItemClick}>
         <ListItemIcon>
-          {todo.isDone ? <CheckIcon /> : <CheckBoxOutlineBlankIcon />}
+          {todo.completed ? <CheckIcon /> : <CheckBoxOutlineBlankIcon />}
         </ListItemIcon>
         <ListItemText primary={todo.title} />
         <ListItemSecondaryAction onClick={handleDeleteActionClick}>
