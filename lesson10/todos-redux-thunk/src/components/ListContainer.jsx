@@ -4,7 +4,7 @@ import { removeTodo, toggleTodo } from "../store/actions";
 import TodoList from "./List";
 
 export default function TodoListContainer() {
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todos.todos);
   const dispatch = useDispatch();
 
   function handleToggleTodo(id) {
