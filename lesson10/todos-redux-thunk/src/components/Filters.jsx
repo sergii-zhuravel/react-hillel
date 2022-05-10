@@ -13,12 +13,11 @@ const PaperContainer = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Filters() {
-  const filter = "all";
-  // const filter = useSelector((state) => state.filter);
-  // const dispatch = useDispatch();
+  const filter = useSelector((state) => state.filter);
+  const dispatch = useDispatch();
 
   function handleChangeFilter(filter) {
-    // dispatch(changeFilter(filter));
+    dispatch(changeFilter(filter));
   }
   return (
     <PaperContainer>
