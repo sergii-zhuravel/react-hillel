@@ -3,7 +3,7 @@ import { Paper } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FILTER_ALL, FILTER_DONE, FILTER_NOT_DONE } from "../constants/filters";
-import { changeFilter } from "../store/filter/actions";
+import { changeFilter, saveFilter } from "../store/filter/actions";
 import FilterButton from "./FilterButton";
 
 const PaperContainer = styled(Paper)(({ theme }) => ({
@@ -13,11 +13,12 @@ const PaperContainer = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Filters() {
-  const filter = useSelector((state) => state.filter);
-  const dispatch = useDispatch();
+  const filter = "all";
+  // const filter = useSelector((state) => state.filter);
+  // const dispatch = useDispatch();
 
   function handleChangeFilter(filter) {
-    dispatch(changeFilter(filter));
+    // dispatch(changeFilter(filter));
   }
   return (
     <PaperContainer>

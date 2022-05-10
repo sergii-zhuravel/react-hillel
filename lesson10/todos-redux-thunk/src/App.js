@@ -10,7 +10,7 @@ function App() {
   return (
     <Container maxWidth="md">
       <Provider store={store}>
-        <Filters />
+        {/* <Filters /> */}
         <List />
         <Form />
       </Provider>
