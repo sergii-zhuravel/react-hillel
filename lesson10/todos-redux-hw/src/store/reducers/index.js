@@ -23,7 +23,7 @@ export default function reducer(state = INITIAL_STATE, { type, payload }) {
       };
     case TODOS_TOGGLE_TODO:
       const newTodos = state.todos.map((todo) =>
-        todo.id === payload.id ? { ...todo, isDone: !todo.isDone } : todo
+        todo.id === payload ? { ...todo, isDone: !todo.isDone } : todo
       );
       return { ...state, todos: newTodos };
     default:

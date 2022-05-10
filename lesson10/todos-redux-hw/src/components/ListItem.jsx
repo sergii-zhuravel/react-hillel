@@ -6,33 +6,30 @@ import {
   ListItemSecondaryAction,
   ListItemText,
 } from "@mui/material";
+import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 
 export default function TodoListItem({ todo, toggleTodo, removeTodo }) {
-  // const todos = useSelector((state) => state.todos);
+  function handleDeleteActionClick(e) {
+    e.preventDefault();
+    removeTodo(todo.id);
+  }
 
-  // const dispatch = useDispatch();
-
-  // function handleClick(todo) {
-  //   dispatch(toogleTodo(todo));
-  // }
-
+  function handleItemClick(e) {
+    toggleTodo(todo.id);
+  }
   return (
     <>
-      <ListItem button onClick={() => toggleTodo(todo.id)}>
+      <ListItem button onClick={handleItemClick}>
         <ListItemIcon>
           {todo.isDone ? <CheckIcon /> : <CheckBoxOutlineBlankIcon />}
         </ListItemIcon>
         <ListItemText primary={todo.title} />
-        <ListItemSecondaryAction
-          onClick={(e) => {
-            e.preventDefault();
-            removeTodo(todo.id);
-          }}
-        >
+        <ListItemSecondaryAction onClick={handleDeleteActionClick}>
           <DeleteIcon />
         </ListItemSecondaryAction>
       </ListItem>
+      <Divider />
     </>
   );
 }

@@ -16,7 +16,7 @@ export default function TodoForm() {
 
   function onFormSubmit(e) {
     e.preventDefault();
-    dispatch(addTodo());
+    dispatch(addTodo(values));
 
     resetForm();
   }
@@ -33,16 +33,17 @@ export default function TodoForm() {
       <Grid container spacing={3}>
         <Grid item xs={10}>
           <TextField
-            placeholder="Title"
+            label="Title"
             name="title"
             value={values.title}
             onChange={handleChange}
+            variant="outlined"
             fullWidth
-            margin="normal"
+            size="small"
           />
         </Grid>
         <Grid item xs={2}>
-          <Button type="submit" variant="contained">
+          <Button type="submit" variant="contained" size="medium">
             Add
           </Button>
         </Grid>
