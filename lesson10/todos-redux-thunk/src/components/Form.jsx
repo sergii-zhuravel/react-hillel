@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTodo } from "../store/todos/actions";
+import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createNewTodo } from "../store/todos/actions";
 
 const initialValues = {
   title: "",
@@ -16,7 +16,7 @@ export default function TodoForm() {
 
   function onFormSubmit(e) {
     e.preventDefault();
-    dispatch(addTodo(values));
+    dispatch(createNewTodo(values));
 
     resetForm();
   }

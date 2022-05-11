@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FILTER_ALL, FILTER_DONE } from "../constants/filters";
-import { fetchTodos, removeTodo, toggleTodo } from "../store/todos/actions";
+import {
+  fetchTodos,
+  removeTodoById,
+  toggleTodoById,
+} from "../store/todos/actions";
 import TodoList from "./List";
 
 export default function TodoListContainer() {
@@ -14,19 +18,16 @@ export default function TodoListContainer() {
   }
 
   function handleToggleTodo(id) {
-    dispatch(toggleTodo(id));
+    dispatch(toggleTodoById(id));
   }
 
   function handleRemoveTodo(id) {
-    dispatch(removeTodo(id));
+    dispatch(removeTodoById(id));
   }
 
   useEffect(() => {
-    // getTodos().then((todos) => {
-    //   dispatch(setTodos(todos));
-    // });
     dispatch(fetchTodos());
-  }, []);
+  }, [dispatch]);
 
   return (
     <TodoList
