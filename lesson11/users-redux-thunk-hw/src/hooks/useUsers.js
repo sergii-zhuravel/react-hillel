@@ -1,24 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getUsersList } from "../services/usersService";
-import { useBooleanFlag } from "./common";
+import { setUsers, toogleIsLoading } from "../store/slices/users";
 
 export default function useUsers() {
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, toggleIsLoading] = useBooleanFlag(false);
+  const isLoading = useSelector((state) => state.users.isLoading);
+  const users = useSelector((state) => state.users.users);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    toggleIsLoading(true);
-    setError(null);
+    dispatch(toogleIsLoading(true));
     getUsersList()
-      .then((data) => setUsers(data))
-      .catch((err) => setError(err))
-      .finally(() => toggleIsLoading(false));
+      .then((data) => dispatch(setUsers(data)))
+      .finally(() => dispatch(toogleIsLoading(false)));
   }, []);
 
   return {
     users,
     isLoading,
-    error,
   };
 }

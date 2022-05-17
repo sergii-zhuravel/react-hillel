@@ -5,6 +5,7 @@ import useUsers from "../hooks/useUsers";
 
 function UsersPage() {
   const { users, isLoading } = useUsers();
+
   return (
     <div>
       <h1>Users</h1>
