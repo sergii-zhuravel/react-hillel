@@ -7,24 +7,24 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export default function UsersForm({ user, saveUser, deleteUser }) {
-  const [editUser, setEditUser] = useState(user);
+  const {
+    register,
+    handleSubmit,
+    formState: { isDirty, errors },
+  } = useForm({ defaultValues: user });
+
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setEditUser(user);
-  }, [user.id]);
-
-  async function onFormSubmit(e) {
-    e.preventDefault();
-    const { id } = await saveUser(editUser);
-
+  async function onFormSubmit(data) {
+    const { id } = await saveUser(data);
     navigate("/users/" + id);
   }
 
   async function onDelete() {
-    await deleteUser(editUser.id);
+    await deleteUser(user.id);
     navigate("/users/create");
   }
 
@@ -32,42 +32,44 @@ export default function UsersForm({ user, saveUser, deleteUser }) {
     navigate("/users");
   }
 
-  function handleChange(e) {
-    setEditUser({ ...editUser, [e.target.name]: e.target.value });
-  }
   return (
     <Grid container justify="center">
       <Grid item xs={12}>
         <Typography component="h1" variant="h4" align="center">
           User Form
         </Typography>
-        <form onSubmit={onFormSubmit}>
+        <form onSubmit={handleSubmit(onFormSubmit)}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <TextField
                 label="Name"
-                name="name"
-                value={editUser.name}
-                onChange={handleChange}
                 fullWidth
+                {...register("name", { required: "The field is required!!" })}
+                error={errors.name && errors.name.message !== ""}
+                helperText={errors.name?.message}
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
                 label="Surname"
-                name="surname"
-                value={editUser.surname}
-                onChange={handleChange}
                 fullWidth
+                {...register("surname", {
+                  minLength: {
+                    value: 3,
+                    message: "Should be at least 10 chars long",
+                  },
+                })}
+                error={errors.surname && errors.surname.message !== ""}
+                helperText={errors.surname && errors.surname.message}
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
                 label="Phone"
-                name="phone"
-                value={editUser.phone}
-                onChange={handleChange}
                 fullWidth
+                {...register("phone")}
+                error={errors.phone && errors.phone.message !== ""}
+                helperText={errors.phone && errors.phone.message}
               />
             </Grid>
           </Grid>
@@ -89,6 +91,7 @@ export default function UsersForm({ user, saveUser, deleteUser }) {
                   variant="contained"
                   color="primary"
                   startIcon={<SaveIcon />}
+                  disabled={!isDirty}
                 >
                   Save
                 </Button>

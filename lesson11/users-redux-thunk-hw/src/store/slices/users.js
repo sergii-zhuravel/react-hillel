@@ -11,20 +11,15 @@ const initialState = {
   users: [],
 };
 
-export const fetchUsers = () => {
-  return function (dispatch) {
-    getUsersList().then((users) => dispatch(setUsers(users)));
-  };
-};
+export const fetchUsers = () => (dispatch) =>
+  getUsersList().then((users) => dispatch(setUsers(users)));
 
-export const createUserThunk = (user) => {
-  return async function (dispatch, getState) {
-    const data = await createUser(user);
-    const state = getState();
-    const newUsers = [...state.users.users, user];
-    dispatch(setUsers(newUsers));
-    return data;
-  };
+export const createUserThunk = (user) => async (dispatch, getState) => {
+  const data = await createUser(user);
+  const state = getState();
+  const newUsers = [...state.users.users, user];
+  dispatch(setUsers(newUsers));
+  return data;
 };
 
 export const updateUserThunk = (user) => {
