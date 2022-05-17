@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteUser, getUsersList } from "../../services/usersService";
+import {
+  createUser,
+  deleteUser,
+  getUsersList,
+} from "../../services/usersService";
 
 const initialState = {
   isLoading: false,
@@ -9,6 +13,15 @@ const initialState = {
 export const fetchUsers = () => {
   return function (dispatch) {
     getUsersList().then((users) => dispatch(setUsers(users)));
+  };
+};
+
+export const createUserThunk = (user) => {
+  return function (dispatch, getState) {
+    createUser(user);
+    const state = getState();
+    const newUsers = [...state.users.users, user];
+    dispatch(setUsers(newUsers));
   };
 };
 

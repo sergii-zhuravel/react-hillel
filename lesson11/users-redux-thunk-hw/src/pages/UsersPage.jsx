@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../components/common/Loading";
-import UsersList from "../components/Users/UsersList/UsersList";
+import UsersList from "../components/Users/UsersList";
 import useUsers from "../hooks/useUsers";
 
 function UsersPage() {
   const { users, isLoading, removeUser } = useUsers();
+  const navigate = useNavigate();
+
+  function handleOnSelect(id) {
+    navigate(`/users/${id}`);
+  }
 
   return (
     <div>
@@ -13,7 +18,11 @@ function UsersPage() {
       {isLoading ? (
         <Loading />
       ) : (
-        <UsersList list={users} removeUser={removeUser} />
+        <UsersList
+          list={users}
+          removeUser={removeUser}
+          onSelect={handleOnSelect}
+        />
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Loading from "../components/common/Loading";
-import UsersList from "../components/Users/UsersList/UsersList";
+import UsersList from "../components/Users/UsersList";
 import useUsers from "../hooks/useUsers";
 
 export default function UserEditPage() {

@@ -5,9 +5,9 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import UsersListItem from "../UsersListItem/UsersListItem";
+import UsersListItem from "./UsersListItem";
 
-function UsersList({ list, removeUser }) {
+function UsersList({ list, removeUser, onSelect }) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -22,7 +22,7 @@ function UsersList({ list, removeUser }) {
         </TableHead>
         <TableBody>
           {list.map((user) => (
-            <UsersListItem key={user.id} item={user} removeUser={removeUser} />
+            <UsersListItem key={user.id} item={user} removeUser={removeUser} onSelect={onSelect} />
           ))}
         </TableBody>
       </Table>

@@ -3,9 +3,15 @@ import Button from "@mui/material/Button";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 
-function UsersListItem({ item, removeUser }) {
+function UsersListItem({ item, removeUser, onSelect }) {
+  function handleClick(id) {
+    onSelect(id);
+  }
   return (
-    <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+    <TableRow
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+      onClick={(event) => handleClick(item.id)}
+    >
       <TableCell component="th" scope="row">
         {item.name}
       </TableCell>
