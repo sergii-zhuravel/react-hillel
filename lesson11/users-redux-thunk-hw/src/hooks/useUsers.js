@@ -6,6 +6,7 @@ import {
   deleteUserThunk,
   setUsers,
   toogleIsLoading,
+  updateUserThunk,
 } from "../store/slices/users";
 
 const DEFAULT_USER = {
@@ -26,8 +27,12 @@ export default function useUsers() {
       .finally(() => dispatch(toogleIsLoading(false)));
   }, [dispatch]);
 
-  function saveUser(id) {
-    return dispatch(createUserThunk(id));
+  function saveUser(user) {
+    if (user.id) {
+      return dispatch(updateUserThunk(user));
+    } else {
+      return dispatch(createUserThunk(user));
+    }
   }
 
   function removeUser(id) {

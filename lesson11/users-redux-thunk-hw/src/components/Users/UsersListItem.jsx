@@ -4,26 +4,29 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 
 function UsersListItem({ item, removeUser, onSelect }) {
-  function handleClick(id) {
+  function handleRowClick(id) {
     onSelect(id);
+  }
+  function handleDeleteBtnClick(event) {
+    event.stopPropagation();
+    removeUser(item.id);
   }
   return (
     <TableRow
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-      onClick={(event) => handleClick(item.id)}
+      onClick={() => handleRowClick(item.id)}
     >
       <TableCell component="th" scope="row">
         {item.name}
       </TableCell>
+      <TableCell align="right">{item.surname}</TableCell>
       <TableCell align="right">{item.phone}</TableCell>
-      <TableCell align="right">{item.email}</TableCell>
-      <TableCell align="right">{item.website}</TableCell>
       <TableCell align="right">
         <Button
           variant="outlined"
           color="error"
           startIcon={<DeleteIcon />}
-          onClick={() => removeUser(item.id)}
+          onClick={handleDeleteBtnClick}
         >
           Delete
         </Button>

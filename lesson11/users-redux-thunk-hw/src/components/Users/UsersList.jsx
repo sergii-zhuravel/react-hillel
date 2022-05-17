@@ -14,9 +14,8 @@ function UsersList({ list, removeUser, onSelect }) {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
+            <TableCell align="right">Surname</TableCell>
             <TableCell align="right">Phone</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Website</TableCell>
             <TableCell align="right">Delete</TableCell>
           </TableRow>
         </TableHead>

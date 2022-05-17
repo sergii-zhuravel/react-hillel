@@ -6,7 +6,7 @@ export default function UserCreatePage() {
   return (
     <div>
       <h1>User create</h1>
-      <UsersForm user={getUser()} saveUser={saveUser} removeUser={removeUser} />
+      <UsersForm user={getUser()} saveUser={saveUser} deleteUser={removeUser} />
     </div>
   );
 }

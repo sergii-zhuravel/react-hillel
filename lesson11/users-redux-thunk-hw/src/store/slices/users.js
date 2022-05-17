@@ -3,6 +3,7 @@ import {
   createUser,
   deleteUser,
   getUsersList,
+  updateUser,
 } from "../../services/usersService";
 
 const initialState = {
@@ -17,20 +18,34 @@ export const fetchUsers = () => {
 };
 
 export const createUserThunk = (user) => {
-  return function (dispatch, getState) {
-    createUser(user);
+  return async function (dispatch, getState) {
+    const data = await createUser(user);
     const state = getState();
     const newUsers = [...state.users.users, user];
     dispatch(setUsers(newUsers));
+    return data;
+  };
+};
+
+export const updateUserThunk = (user) => {
+  return async function (dispatch, getState) {
+    const data = await updateUser(user);
+    const state = getState();
+    const newUsers = state.users.users.map((u) =>
+      u.id === user.id ? user : u
+    );
+    dispatch(setUsers(newUsers));
+    return data;
   };
 };
 
 export const deleteUserThunk = (id) => {
-  return function (dispatch, getState) {
-    deleteUser(id);
+  return async function (dispatch, getState) {
+    const data = await deleteUser(id);
     const state = getState();
     const newUsers = state.users.users.filter((user) => user.id !== id);
     dispatch(setUsers(newUsers));
+    return data;
   };
 };
 
