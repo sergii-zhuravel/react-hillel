@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUsersList } from "../../services/usersService";
+import { deleteUser, getUsersList } from "../../services/usersService";
 
 const initialState = {
   isLoading: false,
@@ -12,14 +12,23 @@ export const fetchUsers = () => {
   };
 };
 
+export const deleteUserThunk = (id) => {
+  return function (dispatch, getState) {
+    deleteUser(id);
+    const state = getState();
+    const newUsers = state.users.users.filter((user) => user.id !== id);
+    dispatch(setUsers(newUsers));
+  };
+};
+
 export const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    setUsers: (state, { type, payload }) => {
+    setUsers: (state, { payload }) => {
       state.users = payload;
     },
-    toogleIsLoading: (state, { type, payload }) => {
+    toogleIsLoading: (state, { payload }) => {
       state.isLoading = payload !== undefined ? payload : !state.isLoading;
     },
   },

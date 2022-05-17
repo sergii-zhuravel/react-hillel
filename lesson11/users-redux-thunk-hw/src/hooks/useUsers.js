@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsersList } from "../services/usersService";
-import { setUsers, toogleIsLoading } from "../store/slices/users";
+import {
+  deleteUserThunk,
+  setUsers,
+  toogleIsLoading,
+} from "../store/slices/users";
 
 export default function useUsers() {
   const isLoading = useSelector((state) => state.users.isLoading);
@@ -15,8 +19,13 @@ export default function useUsers() {
       .finally(() => dispatch(toogleIsLoading(false)));
   }, []);
 
+  function removeUser(id) {
+    dispatch(deleteUserThunk(id));
+  }
+
   return {
     users,
     isLoading,
+    removeUser,
   };
 }
