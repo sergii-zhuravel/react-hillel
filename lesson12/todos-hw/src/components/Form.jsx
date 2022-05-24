@@ -1,50 +1,45 @@
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createNewTodo } from "../store/todos/actions";
+import React from "react";
+import { useForm } from "react-hook-form";
 
-const initialValues = {
-  title: "",
-  completed: false,
-};
+export default function TodoForm({ initialValues, onCancel, onSumbit }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ defaultValues: initialValues });
 
-export default function TodoForm() {
-  const [values, setValues] = useState(initialValues);
-  const dispatch = useDispatch();
-
-  function onFormSubmit(e) {
-    e.preventDefault();
-    dispatch(createNewTodo(values));
-
-    resetForm();
+  function onFormSubmit(data) {
+    onSumbit(data);
+    onCancel();
   }
 
-  function resetForm() {
-    setValues(initialValues);
-  }
-
-  function handleChange(e) {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  }
   return (
-    <form autoComplete="off" onSubmit={onFormSubmit}>
-      <Grid container spacing={3}>
-        <Grid item xs={10}>
+    <form autoComplete="off" onSubmit={handleSubmit(onFormSubmit)}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sx={{ margin: 1 }}>
           <TextField
             label="Title"
-            name="title"
-            value={values.title}
-            onChange={handleChange}
+            {...register("title", { required: "The field is required!!" })}
+            error={errors.name && errors.name.message !== ""}
+            helperText={errors.name?.message}
             variant="outlined"
             fullWidth
-            size="small"
           />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={12} sx={{ display: "flex", gap: 1 }}>
           <Button type="submit" variant="contained" size="medium">
             Add
+          </Button>
+          <Button
+            variant="contained"
+            size="medium"
+            color="secondary"
+            onClick={onCancel}
+          >
+            Cancel
           </Button>
         </Grid>
       </Grid>

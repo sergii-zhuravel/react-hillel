@@ -58,8 +58,8 @@ export const toggleTodoById = (id) => {
 
 export const createNewTodo = (todo) => {
   return function (dispatch) {
-    createTodo(todo).then(() => {
-      dispatch(addTodo(todo));
+    createTodo(todo).then((data) => {
+      dispatch(addTodo(data));
     });
   };
 };

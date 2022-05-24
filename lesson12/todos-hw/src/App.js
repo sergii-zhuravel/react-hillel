@@ -1,20 +1,18 @@
 import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import List from "./components/ListContainer";
-import Form from "./components/Form";
+import TodosPage from "./pages/Todos";
 import store from "./store/store";
-import Container from "@mui/material/Container";
-import Filters from "./components/Filters";
 
 function App() {
   return (
-    <Container maxWidth="md">
+    <BrowserRouter>
       <Provider store={store}>
-        <Filters />
-        <List />
-        <Form />
+        <Routes>
+          <Route path={"*"} element={<TodosPage />} />
+        </Routes>
       </Provider>
-    </Container>
+    </BrowserRouter>
   );
 }
 
