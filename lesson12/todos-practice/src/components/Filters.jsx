@@ -12,7 +12,7 @@ const PaperContainer = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function Filters() {
+function Filters() {
   const filter = useSelector((state) => state.filter);
   const dispatch = useDispatch();
 
@@ -45,3 +45,5 @@ export default function Filters() {
     </PaperContainer>
   );
 }
+
+export default React.memo(Filters);

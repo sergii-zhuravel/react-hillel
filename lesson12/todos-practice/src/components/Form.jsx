@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import React from "react";
 import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
 export default function TodoForm({ initialValues, onCancel, onSumbit }) {
   const {
@@ -46,3 +47,10 @@ export default function TodoForm({ initialValues, onCancel, onSumbit }) {
     </form>
   );
 }
+
+TodoForm.propTypes = {
+  onCancel: PropTypes.func.isRequired,
+  initialValues: PropTypes.shape({
+    title: PropTypes.string,
+  }).isRequired,
+};
