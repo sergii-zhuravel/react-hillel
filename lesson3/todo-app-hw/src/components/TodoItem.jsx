@@ -5,7 +5,6 @@ export default class TodoItem extends Component {
     console.log("TODO ITEM CONSTRUCTOR");
   }
   render() {
-    // const { item } = this.props;
     const { completed, title, id } = this.props.item;
     return (
       <li

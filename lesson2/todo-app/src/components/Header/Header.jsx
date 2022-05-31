@@ -6,7 +6,7 @@ export default class Header extends Component {
     text: "Hello, Hillel",
     isVisible: true,
     food: ["eggs", "bread", "milk", "butter"],
-    newFood: ''
+    newFood: "",
   };
   constructor() {
     super();
@@ -33,7 +33,7 @@ export default class Header extends Component {
   }
 
   onInputChange(e) {
-    this.setState({newFood: e.target.value});
+    this.setState({ newFood: e.target.value });
   }
 
   onButtonClick() {
