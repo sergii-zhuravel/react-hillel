@@ -12,7 +12,13 @@ export default class TodoItem extends Component {
         onClick={() => this.props.onItemClick(id)}
       >
         {title}
-        <button onClick={() => this.props.onDeleteButtonClick(id)}>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            this.props.onDeleteButtonClick(id);
+          }}
+          title="Delete item"
+        >
           Delete
         </button>
       </li>
@@ -29,5 +35,5 @@ export default class TodoItem extends Component {
 }
 
 function getStyle(completed) {
-  return completed ? "green" : "yellow";
+  return completed ? "lightblue" : "yellow";
 }
