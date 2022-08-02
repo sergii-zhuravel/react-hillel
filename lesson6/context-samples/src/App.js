@@ -1,15 +1,13 @@
-import { createContext } from "react";
 import "./App.css";
 import UserInfo from "./components/UserInfo";
 import { UserProvider } from "./context/userContext";
-
-const themeContext = createContext("light");
+import { themeContext } from "./context/themeContext";
 
 function App() {
   return (
     <themeContext.Provider value="light">
       <UserProvider>
-        <UserInfo themeContext={themeContext} />
+        <UserInfo />
       </UserProvider>
     </themeContext.Provider>
   );

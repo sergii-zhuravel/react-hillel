@@ -1,7 +1,8 @@
 import { useContext } from "react";
+import { themeContext } from "../context/themeContext";
 import userContext from "../context/userContext";
 
-export default function UserInfo({ themeContext }) {
+export default function UserInfo() {
   const { name, onLogin, onLogout } = useContext(userContext);
   const theme = useContext(themeContext);
   console.log(theme);
