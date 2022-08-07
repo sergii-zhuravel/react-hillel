@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 function ContactsListItem({ contact, onDelete, onSelect }) {
@@ -7,8 +8,10 @@ function ContactsListItem({ contact, onDelete, onSelect }) {
     onDelete(contact);
   };
   return (
-    <li className="contact-list-item" onClick={onSelect.bind(null, contact)}>
-      {contact.name} {contact.surname} - {contact.phone}
+    <li className="contact-list-item">
+      <Link to={`/contacts/${contact.id}`}>
+        {contact.name} {contact.surname} - {contact.phone}
+      </Link>
       &nbsp;
       <a href="#" onClick={onDeleteClick}>
         Delete

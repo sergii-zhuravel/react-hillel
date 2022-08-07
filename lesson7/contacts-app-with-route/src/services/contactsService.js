@@ -5,6 +5,10 @@ export function getContactsList() {
   return api.get(CONTACTS_URI).then((resp) => resp.data);
 }
 
+export function getContact(id) {
+  return api.get(CONTACTS_URI + "/" + id).then((resp) => resp.data);
+}
+
 export function createContact(contact) {
   return api.post(CONTACTS_URI, contact).then((resp) => resp.data);
 }
